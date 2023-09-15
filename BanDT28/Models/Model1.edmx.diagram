@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a32f08f45c46406da3b6f5721dbb7b14" Name="Diagram1">
+        <EntityTypeShape EntityType="QLdienthoaiModel.Chitietdonhang" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.Donhang" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.Hangsanxuat" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.Hedieuhanh" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.Nguoidung" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.PhanQuyen" Width="1.5" PointX="1.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.Sanpham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="QLdienthoaiModel.FK_Chitietdonhang_Donhang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel.FK_Chitietdonhang_Sanpham" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel.FK_Donhang_Khachhang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel.FK_Sanpham_Hangsanxuat" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel.FK_Sanpham_Hedieuhanh" ManuallyRouted="false" />
+        <AssociationConnector Association="QLdienthoaiModel.FK_Nguoidung_Nguoidung" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLdienthoaiModel.sysdiagram" Width="1.5" PointX="3.375" PointY="5.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

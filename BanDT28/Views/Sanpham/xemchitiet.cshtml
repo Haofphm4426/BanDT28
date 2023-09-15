@@ -1,0 +1,26 @@
+﻿@using BanDT28.Models
+@model Sanpham
+
+
+@{
+    ViewBag.Title = "xemchitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+
+<CENTER>
+    <div>
+        <h1>CHI TIẾT SẢN PHẨM</h1>
+        <img src="@Url.Content("~/HinhanhSP/" + @Model.Anhbia)" />
+        <br />
+        <h2> @Model.Tensp</h2>
+        <h2 style="color:red; font-weight: bold;">@String.Format("{0:0,0}", Model.Giatien) VNĐ</h2>
+        <br />
+        <h3>@Model.Mota</h3>
+        <br />
+        @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = Model.Masp, @strURL = Request.Url.ToString() }))
+        {
+    <input type="submit" value="Mua hàng" id="bgnGioHang" style="font-size: 30px" />}
+
+    </div>
+</CENTER>

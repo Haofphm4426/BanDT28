@@ -1,0 +1,44 @@
+﻿@model IEnumerable<BanDT28.Models.Sanpham>
+
+@{
+    ViewBag.Title = "danhsach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var t1 = Model.FirstOrDefault(i => i.Mahang == 1);
+    var t2 = Model.FirstOrDefault(i => i.Mahang == 2);
+    var t3 = Model.FirstOrDefault(i => i.Mahang == 3);
+}
+<div class="row" style="margin-top: 20px">
+    <div style="" class="title_custom_danhsach">
+        @{
+            if (t1 != null)
+            {
+                <h3 style="margin: 0; padding-right: 10px; font-size: 18px; font-weight: bold; color: white "> SAMSUNG </h3>
+            }
+            if (t2 != null)
+            {
+                <h3 style="margin: 0; padding-right: 10px; font-size: 18px; font-weight: bold; color: white "> IPHONE </h3>
+            }
+            if (t3 != null)
+            {
+                <h3 style="margin: 0; padding-right: 10px; font-size: 18px; font-weight: bold; color: white "> XIAOMI </h3>
+            }
+        }
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6 col_custom" style="margin-top: 20px">
+            <a class="dt_custom" href="@Url.Action("xemchitiet", new {@Masp=item.Masp })">
+                <img src=@Url.Content("~/HinhanhSP/" + item.Anhbia) class="img-responsive img_custom" alt="" style="width: 100%; height: 260px" />
+                <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center">
+                    <h3 style="margin-top: 20px; font-size: 18px; color: black">@item.Tensp</h3>
+                    <h3 style="color:red; font-weight: bold;">@String.Format("{0:0,0}", @item.Giatien) VNĐ</h3>
+                    <br />
+                    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMasp = item.Masp, @strURL = Request.Url.ToString() }))
+                    {
+                        <input type="submit" value="Mua hàng" id="bgnGioHang" style="font-size: 18px; color: black; " />
+                    }
+                </div>
+            </a>
+        </div>}
+</div>
+

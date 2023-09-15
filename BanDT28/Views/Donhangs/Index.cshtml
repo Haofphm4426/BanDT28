@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BanDT28.Models.Donhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách đơn hàng</h2>
+<table class="table">
+    <tr>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            Thời gian giao hàng
+        </th>
+        <th>
+            Địa chỉ giao hàng
+        </th>
+        <th>
+            Phương thức thanh toán
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nguoidung.Hoten)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Ngaydat)
+    </td>
+    <td>
+        <div >3 - 5 ngày</div>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Diachinhanhang)
+    </td>
+        @Html.DisplayFor(modelItem => item.Phuongthucthanhtoan)
+        @{ 
+            if(item.Phuongthucthanhtoan == 1)
+            {
+                <td style="color:green">
+                    Thanh toán khi nhận hàng
+                </td>
+            }
+            if(item.Phuongthucthanhtoan == 2)
+            {
+                <td style="color:green">
+                    Thanh toán chuyển khoản
+                </td>
+            }
+        }
+    
+    <td>
+        <button class="btn-primary">
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.Madon }, new { @style = "color:white;" })
+        </button>
+
+    </td>
+</tr>
+}
+
+</table>

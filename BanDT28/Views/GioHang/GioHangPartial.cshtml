@@ -1,0 +1,19 @@
+﻿<style type="text/css">
+    .giohang{
+        color:white;
+        font-size:large
+         
+    }
+
+</style>
+
+<a href="@Url.Action("GioHang","GioHang")" class="giohang" >
+    Giỏ hàng<i class="fa fa-shopping-cart" style="margin-left: 5px"></i>
+    @{ 
+        if(@ViewBag.TongSoLuong != null)
+        {
+            <span>(@ViewBag.TongSoLuong)</span>
+    }
+    }
+</a>
+

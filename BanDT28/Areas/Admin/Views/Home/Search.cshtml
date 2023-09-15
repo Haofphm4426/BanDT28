@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BanDT28.Models.Sanpham>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div style="margin-top: 20px;">
+    <h3 style="font-weight:400">Tìm thấy <span style="font-weight: bold ">@ViewBag.CountProduct</span> sản phẩm cho từ khoá <span style="font-weight: bold">'@ViewBag.KeySearch'</span></h3>
+</div>
+<table class="table table-bordered" style="margin-top: 20px">
+    <tr>
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Giá tiền
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Thẻ sim
+        </th>
+        <th>
+            Ảnh bìa
+        </th>
+        <th>
+            Tên hãng
+        </th>
+        <th>
+            Hệ điều hành
+        </th>
+        <th> Hành động</th>
+    </tr>
+    @if (@ViewBag.CountProduct != 0)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tensp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Giatien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mota)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thesim)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/HinhanhSP/" +item.Anhbia)" width="50" height="50" />
+                    @*@Html.DisplayFor(modelItem => item.Anhbia)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hangsanxuat.Tenhang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hedieuhanh.Tenhdh)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.Masp })|
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Masp }) |
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.Masp })
+                </td>
+            </tr>
+        }
+
+    }
+
+</table>

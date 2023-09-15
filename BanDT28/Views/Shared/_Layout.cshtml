@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH Store - Điện thoại rẻ</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel=" stylesheet" href="~/Content/Style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    @using BanDT28.Models
+
+    <style type="text/css">
+        body {
+            background-color: #F0F0F0;
+        }
+
+        .form_search {
+            display: flex;
+        }
+
+            .form_search button {
+                display: flex;
+                align-items: center;
+                background-color: #fe5d02;
+                border: 1px solid #fff;
+                color: white;
+            }
+
+                .form_search button:hover {
+                    background-color: #fe5d02;
+                    border: 1px solid #fff;
+                    color: white;
+                }
+
+                .form_search button:focus {
+                    background-color: #fe5d02;
+                    border: 1px solid #fff;
+                    color: white;
+                }
+
+                .form_search button:active {
+                    background-color: #fe5d02;
+                    border: 1px solid #fff;
+                    color: white;
+                }
+
+        #SearchString {
+            display: block;
+            width: 200px;
+            padding: 0 10px;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            margin-right: 10px;
+        }
+
+        .row_custom {
+            margin-right: -8px;
+            margin-left: -8px;
+        }
+
+        .col_custom {
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+
+        .navbar-inverse {
+            background-color: #fe5d02;
+            border-color: #fe5d02;
+        }
+
+        .top_header {
+            background-color: black;
+            padding: 10px 110px;
+            color: white;
+        }
+
+        .top_header_row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+            .top_header_row a {
+                font-size: 18px;
+            }
+
+        .top_header_row-auth {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .container_custom {
+            display: flex;
+            justify-content: space-between
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .form-inline {
+            float: right;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: x-large;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+            font-size: large;
+        }
+
+        .navbar_custom {
+            padding-left: 80px;
+        }
+
+        .navbar-header_custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-inverse .navbar-nav > li > a:hover {
+            color: black;
+        }
+
+        .navbar-brand {
+            color: cadetblue;
+            font-size: 30px
+        }
+
+        .spnoibat {
+            background-color: white;
+        }
+
+            .spnoibat h3 {
+                padding-left: 30px;
+            }
+
+        .giohang {
+            color: white;
+        }
+
+        h3 {
+            font-size: 18px
+        }
+
+        .dt {
+            margin: 0
+        }
+
+        .dt_custom {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 30px 0;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.1), 0 2px 6px 2px rgba(60,64,67,.15);
+            overflow: hidden;
+        }
+
+        .title_custom_danhsach {
+            width: fit-content;
+            display: flex;
+            border-radius: 0 20px 20px 0px;
+            margin-top: 20px;
+            padding: 10px 10px;
+            background-color: #fe5d02
+        }
+
+        .dt_custom:hover {
+            text-decoration: none;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    @{ var u = Session["use"] as BanDT28.Models.Nguoidung; }
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="top_header col-md-12">
+            <div class="row top_header_row">
+                @*<div class="col-sm-2"><img class="navbar-brand" src="~/HinhanhSP/logo1.jpg" width="20" height="20" style="padding:0" /></div>*@
+                <div class="col-sm-4 col-md-0" style="padding-left:250px">
+                    @Html.Action("GioHangPartial", "GioHang", new { @class = "giohang" })
+                </div>
+                @*@Html.Action("GioHangPartial", "GioHang",new { @style = "color:while" })*@
+                @{ if (u != null)
+                    {
+        <div class="">
+            Xin chào : @u.Email
+            &nbsp;
+            @*@Html.ActionLink("ĐĂNG XUẤT", "DangXuat", "User", new { style = "color:red" })*@
+            <a style="color:red" href="/User/DangXuat"> ĐĂNG XUẤT</a>
+        </div> }
+    else
+    {
+<div class=" top_header_row-auth">
+    <a style="color:white; margin-right: 20px" href="/User/Dangky"> Đăng ký</a>
+    &nbsp;
+    <a style="color:white" href="/User/Dangnhap"> Đăng nhập</a>
+</div> } }
+            </div>
+        </div>
+        <div class="container container_custom">
+            <div class="navbar-header navbar-header_custom">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="@Url.Action("Index","Home")" class="navbar-brand" style="padding: 0">
+                    <img alt="List View" src="@Url.Content("~/HinhanhSP/logo31.png")" style="max-height: 100%">
+                </a>
+                @using (Html.BeginForm("Index", "Sanpham", FormMethod.Get))
+                {
+    <div class="form_search">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <div class="input-group-append _">
+            <button class="btn" type="submit">Tìm kiếm</button>
+        </div>
+    </div>}
+
+                <form class="form-inline" style="float:left; margin-left: 10px">
+                </form>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar_custom">
+                    <li>
+                        <a href="@Url.Action("Index","Home")" title="dienthoai">
+                            @*<span><i class=" glyphicon-music "></i></span>*@
+                            <span>ĐIỆN THOẠI</span>
+
+                        </a>
+                        @*<span><i class=" glyphicon-music "></i> </span>
+                            <br />
+                            <span>@Html.ActionLink("Trang chủ", "Index", "Home") </span>*@
+                    </li>
+                    <li>
+                        <a href="@Url.Action("trangcapnhat","Sanpham")" title="LAPTOP">
+                            @*<span><i class="fas fa-tablet"></i></span>*@
+                            <span>LAPTOP</span>
+
+                        </a>
+
+                    </li>
+                    <li>
+                        <a href="@Url.Action("trangcapnhat","Sanpham")" title="PHUKIEN">
+                            @*<span><i class="fas fa-desktop"></i></span>*@
+                            <span>PHỤ KIỆN</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Home/Contact" title="LIENHE">
+                            @*<span><i class="fas fa-headphones"></i></span>*@
+                            <span>LIÊN HỆ</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link"
+                           href="@Url.Action("Index", "DonHangs")">ĐƠN HÀNG</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="container body-content" style="margin-top: 10px">
+        @RenderBody()
+        <hr />
+        <div>
+            <img class="img-responsive" src="~/HinhanhSP/ban2.jpg" />
+        </div>
+        <br />
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,140 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+    <link href="~/Areas/Assets/dist/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        .menu1 {
+            color: white;
+            padding-left: 20px;
+        }
+
+
+        .menu1:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+        .navbar_custom {
+            background-color: #0075ba;
+        }
+
+        .input_custom input {
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark navbar_custom d-flex justify-content-between">
+        <h3 style="margin-bottom: 0">
+            <a href="/Admin/Home" class="menu1">HH STORE</a>
+        </h3>
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+        {
+<div class="input-group input_custom">
+    @Html.TextBox("SearchStringAdmin", ViewBag.CurrentFilter as string)
+    <div class="input-group-append">
+        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+</div>}
+        @*<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>*@
+        <!-- Navbar--> @*<ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a><a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" style="color: red" href="/User/DangXuat">Đăng xuất</a>
+                    </div>
+                </li>
+            </ul>*@
+
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading" style="color:white"> <h5>Quản lý</h5></div>
+                        <div style="padding-left:20px">
+                            @Html.ActionLink("Sản phẩm", "Index", "Home")
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            @Html.ActionLink("Hãng sản xuất", "Index", "Hangsanxuats")
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            @Html.ActionLink("Hệ điều hành", "Index", "Hedieuhanhs")
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            @Html.ActionLink("Người dùng", "Index", "Nguoidungs")
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            @Html.ActionLink("Phân quyền", "Index", "Phanquyens")
+                        </div>
+
+                        @*<a class="nav-link" href="Home">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Hãng sản xuất
+                            </a>*@
+                    </div>
+                </div>
+
+                <div class="sb-sidenav-footer">
+                    <div>Logged in as: <span style="font-weight: bold">Admin</span></div>
+
+                    <a style="color: red; font-weight: bold" href="/User/DangXuat">Đăng xuất</a>
+                </div>
+
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid" style="text-align: end">
+                    <div class="d-flex align-items-center justify-content-end small">
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    @*<script src="~/Areas/Assets/dist/assets/demo/chart-area-demo.js"></script>*@
+    @*<script src="~/Areas/Assets/dist/assets/demo/chart-bar-demo.js"></script>*@
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    @*<script src="~/Areas/Assets/dist/assets/demo/datatables-demo.js"></script>*@
+</body>
+</html>

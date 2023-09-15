@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "ICT SHOP";
+    
+}
+
+<br />
+<div>
+    <img class="img-responsive" src="~/HinhanhSP/bai1.png" />
+</div>
+<br />
+<div class="spnoibat">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb1.png" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb2.png" class="img-responsive" alt="" />
+        </div>
+        <div class="col-md-4">
+            <img src="~/HinhanhSP/spnb3.png" class="img-responsive" alt="" />
+        </div>
+    </div>
+</div>
+
+<div class="dt">
+    @Html.Action("dtiphonePartial", "Sanpham")
+</div>
+<div class="dt">
+
+    @Html.Action("dtsamsungpartial", "Sanpham")
+</div>
+
+<div class="dt">
+
+    @Html.Action("dtxiaomipartial", "Sanpham")
+</div>
+
+
